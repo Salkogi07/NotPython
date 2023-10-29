@@ -35,6 +35,10 @@ public class Player : MonoBehaviour
         {
             Debug.Log(lastdmg);
             currentHp -= lastdmg;
+            if (currentHp < 0)
+            {
+                currentHp = 0;
+            }
 
             if (currentHp <= 0)
             {

@@ -49,6 +49,11 @@ public class BossJungsik : MonoBehaviour
 
         Debug.Log(lastdmg);
         currentHp -= lastdmg;
+        if(currentHp < 0)
+        {
+            currentHp = 0;
+        }
+
         if (currentHp <= 0)
         {
             bossDie();
@@ -58,6 +63,6 @@ public class BossJungsik : MonoBehaviour
 
     private void bossDie()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 }

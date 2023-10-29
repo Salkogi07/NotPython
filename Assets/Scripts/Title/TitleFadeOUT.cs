@@ -13,7 +13,7 @@ public class TitleFadeOUT : MonoBehaviour
     float time = 0f;
     float F_time = 1f;
 
-    void Start()
+    void AWake()
     {
         Fade();
     }

@@ -14,6 +14,7 @@ public class BossJungsikUI : MonoBehaviour
 
     float imsiSlider;
     string imsiText;
+
     void Start()
     {
         imsiText = boss.currentHp + " / " + boss.bossHp;
@@ -25,6 +26,10 @@ public class BossJungsikUI : MonoBehaviour
         imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
         imsiText = boss.currentHp + " / " + boss.bossHp;
         HandleHp();
+        if(boss.currentHp == 0)
+        {
+            hpbar.enabled = false;
+        }
     }
 
     private void HandleHp()

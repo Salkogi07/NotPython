@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossJungsikPattern1 : MonoBehaviour
 {
     Animator animator;
     BossJungsikMove bossMove;
     BossJungsik boss;
+    public GameObject attackAni;
 
     public Transform AttackPos;
     public Vector2 Attackbox;
@@ -40,56 +42,52 @@ public class BossJungsikPattern1 : MonoBehaviour
     void Update()
     {
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(AttackPos.position, Attackbox, 0);
-        bool playerFound = false; // 플레이어를 발견했는지 여부를 추적하기 위한 변수
 
         foreach (Collider2D collider in collider2Ds)
         {
             if (collider.tag == "Player")
             {
-                playerFound = true; // 플레이어를 발견했음을 표시
-                if (!isAttacking)
+                if (!isAttacking && bossMove.dis <= 2)
                 {
                     attackCoroutine = StartCoroutine(Attack(collider));
                 }
             }
         }
 
-        // 플레이어를 발견하지 못하면 공격 코루틴을 중지
-        if (!playerFound && attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-            isAttacking = false;
-            bossMove.isAttack = false;
-        }
+        
     }
 
     IEnumerator Attack(Collider2D collider)
     {
         if (isAttacking == false)
         {
-            if (count == 3)
+            attackAni.SetActive(true);
+            isAttacking = true;
+            bossMove.isAttack = true;
+
+            yield return new WaitForSeconds(waitTime);
+
+            Collider2D[] updatedCollider2Ds = Physics2D.OverlapBoxAll(AttackPos.position, Attackbox, 0);
+            bool playerStillInRange = false;
+
+            foreach (Collider2D updatedCollider in updatedCollider2Ds)
             {
-                int nextPattern = Random.Range(1, 3); // 1 for SongAttack and 2 for EnemySpawn
-                switch (nextPattern)
+                if (updatedCollider.CompareTag("Player"))
                 {
-                    case 1:
-                        StartCoroutine(SongAttack());
-                        break;
-                    case 2:
-                        StartCoroutine(EnemySpawn());
-                        break;
+                    playerStillInRange = true;
+                    break;
                 }
-                count = 0; // reset the count
             }
-            else
+            if (playerStillInRange)
             {
-                isAttacking = true;
-                yield return new WaitForSeconds(waitTime);
                 Debug.Log("Attack");
                 count++;
                 collider.GetComponent<Player>().TakeDamge(boss.bossAttackDamge);
-                isAttacking = false;
             }
+
+            attackAni.SetActive (false);
+            isAttacking = false;
+            bossMove.isAttack = false;
         }
     }
 

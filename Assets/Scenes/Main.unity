@@ -301,6 +301,7 @@ MonoBehaviour:
   searchPos: {fileID: 1379586760}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &36666863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1803,7 @@ MonoBehaviour:
   searchPos: {fileID: 586140647}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &233851538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2700,6 +2702,7 @@ MonoBehaviour:
   searchPos: {fileID: 1650158824}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &517744773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3962,6 +3965,7 @@ MonoBehaviour:
   searchPos: {fileID: 678900556}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &722431318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4377,6 +4381,7 @@ MonoBehaviour:
   searchPos: {fileID: 801898941}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &768074248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,6 +4842,7 @@ MonoBehaviour:
   searchPos: {fileID: 65077625}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &836911117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6352,6 +6358,7 @@ MonoBehaviour:
   searchPos: {fileID: 1060353985}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &1431699972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9525,6 +9532,7 @@ MonoBehaviour:
   searchPos: {fileID: 2116158695}
   searchbox: {x: 30, y: 4}
   isAttack: 0
+  dis: 0
 --- !u!114 &1934522686
 MonoBehaviour:
   m_ObjectHideFlags: 0

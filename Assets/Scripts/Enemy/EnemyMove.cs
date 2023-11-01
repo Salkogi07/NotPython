@@ -67,11 +67,11 @@ public class EnemyMove : MonoBehaviour
                     Vector3 playerPos = collider.transform.position;
                     if (playerPos.x > transform.position.x)
                     {
-                        moveDir = 3;     // speed up
+                        moveDir = enemy.enemySpeed;     // speed up
                     }
                     else if (playerPos.x < transform.position.x)
                     {
-                        moveDir = -3;
+                        moveDir = enemy.enemySpeed*-1;
                     }
                 }
             }

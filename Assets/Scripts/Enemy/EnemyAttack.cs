@@ -14,6 +14,7 @@ public class EnemyAttack : MonoBehaviour
     private float waitTime = 1.3f;
 
     private bool isAttacking = false;
+    private float attackCooldown = 1.5f; // 공격 쿨다운 시간
     private Coroutine attackCoroutine; // 코루틴 참조 변수 추가
 
     private void Awake()
@@ -27,27 +28,20 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(AttackPos.position, Attackbox, 0);
-        bool playerFound = false; // 플레이어를 발견했는지 여부를 추적하기 위한 변수
 
         foreach (Collider2D collider in collider2Ds)
         {
             if (collider.tag == "Player")
             {
-                //enemyMove.isAttack = true;
-                playerFound = true; // 플레이어를 발견했음을 표시
-                if (!isAttacking)
+                if (!isAttacking && enemyMove.dis <= 2)
                 {
-                    attackCoroutine = StartCoroutine(Attack(collider));
+                    // 쿨다운이 끝나면 공격을 시작
+                    if (attackCoroutine == null)
+                    {
+                        attackCoroutine = StartCoroutine(Attack(collider));
+                    }
                 }
             }
-        }
-
-        // 플레이어를 발견하지 못하면 공격 코루틴을 중지
-        if (!playerFound && attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-            isAttacking = false;
-            enemyMove.isAttack = false;
         }
     }
 
@@ -56,9 +50,31 @@ public class EnemyAttack : MonoBehaviour
         if (isAttacking == false)
         {
             isAttacking = true;
+            enemyMove.isAttack = true;
+
             yield return new WaitForSeconds(waitTime);
-            collider.GetComponent<Player>().TakeDamge(enemy.enemyAttackDamge);
+
+            Collider2D[] updatedCollider2Ds = Physics2D.OverlapBoxAll(AttackPos.position, Attackbox, 0);
+            bool playerStillInRange = false;
+
+            foreach (Collider2D updatedCollider in updatedCollider2Ds)
+            {
+                if (updatedCollider.CompareTag("Player"))
+                {
+                    playerStillInRange = true;
+                    break;
+                }
+            }
+            if (playerStillInRange)
+            {
+                collider.GetComponent<Player>().TakeDamge(enemy.enemyAttackDamge);
+            }
+
             isAttacking = false;
+            enemyMove.isAttack = false;
+
+            yield return new WaitForSeconds(attackCooldown);
+            attackCoroutine = null;
         }
     }
 

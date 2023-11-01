@@ -16,7 +16,8 @@ public class BossJungsikPattern1 : MonoBehaviour
     private float waitTime = 1.3f;
 
     private bool isAttacking = false;
-    private Coroutine attackCoroutine; // 코루틴 참조 변수 추가
+    private float attackCooldown = 1.5f; // 공격 쿨다운 시간
+    private Coroutine attackCoroutine;
 
     int count = 0;
 
@@ -49,7 +50,11 @@ public class BossJungsikPattern1 : MonoBehaviour
             {
                 if (!isAttacking && bossMove.dis <= 2)
                 {
-                    attackCoroutine = StartCoroutine(Attack(collider));
+                    // 쿨다운이 끝나면 공격을 시작
+                    if (attackCoroutine == null)
+                    {
+                        attackCoroutine = StartCoroutine(Attack(collider));
+                    }
                 }
             }
         }
@@ -88,6 +93,9 @@ public class BossJungsikPattern1 : MonoBehaviour
             attackAni.SetActive (false);
             isAttacking = false;
             bossMove.isAttack = false;
+
+            yield return new WaitForSeconds(attackCooldown);
+            attackCoroutine = null;
         }
     }
 

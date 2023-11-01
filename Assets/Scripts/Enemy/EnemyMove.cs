@@ -23,6 +23,8 @@ public class EnemyMove : MonoBehaviour
     private bool isKnockBack = false;
     private bool isMoving = false; // 움직임을 체크하는 변수를 추가합니다.
 
+    public float dis;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -50,15 +52,10 @@ public class EnemyMove : MonoBehaviour
             if (collider.tag == "Player")
             {
                 playerDetected = true; // 플레이어를 감지한 경우 변수를 true로 설정합니다.
-                float dis = Vector3.Distance(transform.position, target.position);
-                if (dis <= 2 && !isKnockBack)
+                dis = Vector3.Distance(transform.position, target.position);
+                if (isAttack)
                 {
-                    isAttack = true;
                     moveDir = 0;
-                }
-                else
-                {
-                    isAttack = false;
                 }
                 if (!isAttack && !isKnockBack)
                 {

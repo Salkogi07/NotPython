@@ -63,6 +63,6 @@ public class BossJungsik : MonoBehaviour
 
     private void bossDie()
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

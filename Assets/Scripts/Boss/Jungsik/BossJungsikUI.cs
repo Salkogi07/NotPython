@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class BossJungsikUI : MonoBehaviour
 {
     [SerializeField]
+    private GameObject bossUI;
+    [SerializeField]
     private Slider hpbar;
     [SerializeField]
     private Text text;
+    
 
+    StageManager stageManager;
     public BossJungsik boss;
 
     float imsiSlider;
@@ -17,18 +21,31 @@ public class BossJungsikUI : MonoBehaviour
 
     void Start()
     {
-        imsiText = boss.currentHp + " / " + boss.bossHp;
-        imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
+        stageManager = GetComponent<StageManager>();
+        if(stageManager.mapNum == 2)
+        {
+            bossUI.gameObject.SetActive(true);
+            imsiText = boss.currentHp + " / " + boss.bossHp;
+            imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
+        }
+        else
+        {
+            bossUI.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
-        imsiText = boss.currentHp + " / " + boss.bossHp;
-        HandleHp();
-        if(boss.currentHp == 0)
+        if (stageManager.mapNum == 2)
         {
-            hpbar.enabled = false;
+            bossUI.gameObject.SetActive(true);
+            imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
+            imsiText = boss.currentHp + " / " + boss.bossHp;
+            HandleHp();
+            if (boss.currentHp == 0)
+            {
+                hpbar.enabled = false;
+            }
         }
     }
 

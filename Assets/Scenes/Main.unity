@@ -1765,8 +1765,7 @@ MonoBehaviour:
   targetObj: {fileID: 1732467399}
   toObj: {fileID: 8541667967326458484}
   interaction: {fileID: 2135916983}
-  Panel: {fileID: 90902124}
-  mapNum: 1
+  stageManager: {fileID: 737173566}
 --- !u!1 &432809352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,8 +2498,8 @@ RectTransform:
   m_Father: {fileID: 1008067503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2859,6 +2858,7 @@ GameObject:
   - component: {fileID: 737173563}
   - component: {fileID: 737173564}
   - component: {fileID: 737173565}
+  - component: {fileID: 737173566}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2965,9 +2965,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944b54b6e6ce75647a858faf559571c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossUI: {fileID: 2047665018}
   hpbar: {fileID: 1576347339}
   text: {fileID: 555733095}
   boss: {fileID: 1889998855}
+--- !u!114 &737173566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737173558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ae820eeff59714dadd38b0316815c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObj: {fileID: 1732467399}
+  toObj:
+  - {fileID: 8541667967326458484}
+  - {fileID: 25899793}
+  Panel: {fileID: 90902124}
+  mapNum: 0
 --- !u!1 &740603046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,7 +4664,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5818,8 +5837,7 @@ MonoBehaviour:
   targetObj: {fileID: 1732467399}
   toObj: {fileID: 25899793}
   interaction: {fileID: 188303575}
-  Panel: {fileID: 90902124}
-  mapNum: 2
+  stageManager: {fileID: 737173566}
 --- !u!1 &1880208403
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,7 +6612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2047665019
 MonoBehaviour:
   m_ObjectHideFlags: 0

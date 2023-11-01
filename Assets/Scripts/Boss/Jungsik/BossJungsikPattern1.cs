@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BossJungsikPattern1 : MonoBehaviour
 {
@@ -13,13 +12,19 @@ public class BossJungsikPattern1 : MonoBehaviour
     public Transform AttackPos;
     public Vector2 Attackbox;
 
+    public Transform[] spawnPoints;
+    public GameObject[] spawnPrefab;
+    public StageManager stageManager;
+
     private float waitTime = 1.3f;
 
     private bool isAttacking = false;
     private float attackCooldown = 1.5f; // 공격 쿨다운 시간
     private Coroutine attackCoroutine;
 
-    int count = 0;
+    private float spawnCooldown = 10f;
+    private float spawntimer = 0.0f;
+    private int spawnCount = 0;
 
     private void Awake()
     {
@@ -30,14 +35,11 @@ public class BossJungsikPattern1 : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        Debug.Log("EnemySpawn");
-        yield return new WaitForSeconds(1);
-    }
-
-    IEnumerator SongAttack()
-    {
-        Debug.Log("SongAttack");
-        yield return new WaitForSeconds(1);
+        bossMove.isAttack = true;
+        yield return StartCoroutine(SpanwEnemyStart());
+        bossMove.isAttack = false;
+        spawnCount += 2;
+        spawntimer = 0.0f; // 타이머를 리셋합니다.
     }
 
     void Update()
@@ -58,8 +60,17 @@ public class BossJungsikPattern1 : MonoBehaviour
                 }
             }
         }
-
-        
+    }
+    private void FixedUpdate()
+    {
+        spawntimer += Time.deltaTime;
+        if (spawntimer >= spawnCooldown)
+        {
+            if(spawnCount < 10 && stageManager.mapNum == 2)
+            {
+                StartCoroutine(EnemySpawn());
+            }
+        }
     }
 
     IEnumerator Attack(Collider2D collider)
@@ -85,8 +96,6 @@ public class BossJungsikPattern1 : MonoBehaviour
             }
             if (playerStillInRange)
             {
-                Debug.Log("Attack");
-                count++;
                 collider.GetComponent<Player>().TakeDamge(boss.bossAttackDamge);
             }
 
@@ -97,6 +106,21 @@ public class BossJungsikPattern1 : MonoBehaviour
             yield return new WaitForSeconds(attackCooldown);
             attackCoroutine = null;
         }
+    }
+
+    IEnumerator SpanwEnemyStart()
+    {
+        int enemyIndex = Random.Range(0, 3);
+        SpawnEnemy(enemyIndex, 0);
+        enemyIndex = Random.Range(0, 3);
+        SpawnEnemy(enemyIndex, 1);
+        yield return null;
+
+    }
+
+    void SpawnEnemy(int enemyNum, int enemyPoint)
+    {
+        Instantiate(spawnPrefab[enemyNum], spawnPoints[enemyPoint]);
     }
 
     private void OnDrawGizmos() //범위 표시

@@ -19,13 +19,6 @@ public class BossJungsikMove : MonoBehaviour
 
     private Transform target;
 
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 17f;
-    private float dashingTime = 0.17f;
-    private float dashingCooldown = 1f;
-    private float dashtimer = 0.0f;
-    private int dashCount = 2;
 
     void Awake()
     {
@@ -38,10 +31,6 @@ public class BossJungsikMove : MonoBehaviour
 
     void Update()
     {
-        if (isDashing)
-        {
-            return;
-        }
         Filp();
 
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(searchPos.position, searchbox, 0);
@@ -73,10 +62,6 @@ public class BossJungsikMove : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (isDashing)
-        {
-            return;
-        }
         rigid.velocity = new Vector2(moveDir, rigid.velocity.y);   // no jump monster
     }
     private void Filp()
@@ -88,19 +73,6 @@ public class BossJungsikMove : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rigid.gravityScale;
-        rigid.gravityScale = 0f;
-        rigid.velocity = new Vector3(transform.localScale.x * dashingPower, 0f);
-        yield return new WaitForSeconds(dashingTime);
-        rigid.gravityScale = originalGravity;
-        isDashing = false;
-        canDash = true;
     }
 
     private void OnDrawGizmos() //범위 표시

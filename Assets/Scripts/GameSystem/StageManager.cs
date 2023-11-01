@@ -8,11 +8,17 @@ public class StageManager : MonoBehaviour
     public GameObject targetObj;
 
     public GameObject[] toObj;
+    public GameObject[] spawnManger;
     public Image Panel;
     float time = 0f;
     float F_time = 1f;
 
     public int mapNum;
+
+    private void Update()
+    {
+        spawnManger[mapNum].SetActive(true);
+    }
 
     IEnumerator TeleportRoutine()
     {

@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float spawnTime;
-    public float curTime;
     public Transform[] spawnPoints;
     public GameObject[] enemySet;
-    public GameObject[] spawnPrefab;
-    
-
 
     public void Start()
     {

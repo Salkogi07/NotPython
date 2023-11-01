@@ -13,9 +13,12 @@ public class CameraFollow : MonoBehaviour
 
     public Transform[] Limit;
 
+    public Transform[] bossCam;
+
     float height;
     float width;
 
+    public int bossRoomNum = 0;
     bool isBoseRoom = false;
     bool isBoseCam = false;
 
@@ -59,8 +62,9 @@ public class CameraFollow : MonoBehaviour
         }
         if (isBoseRoom && !isBoseCam)
         {
-            transform.position = new Vector3(target.position.x,target.position.y + 5.5f, -10f);
+            transform.position = new Vector3(bossCam[bossRoomNum].position.x, bossCam[bossRoomNum].position.y + 5.5f, -10f);
             isBoseCam = true;
+            bossRoomNum++;
         }
     }
 }

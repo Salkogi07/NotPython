@@ -3041,7 +3041,7 @@ MonoBehaviour:
   spawnManger:
   - {fileID: 643084701}
   - {fileID: 57942741}
-  - {fileID: 1079072175}
+  - {fileID: 1889998847}
   Panel: {fileID: 90902124}
   mapNum: 0
 --- !u!1 &740603046
@@ -6032,7 +6032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1889998848
 Transform:
   m_ObjectHideFlags: 0

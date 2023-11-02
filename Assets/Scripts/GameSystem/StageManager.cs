@@ -15,7 +15,11 @@ public class StageManager : MonoBehaviour
 
     public int mapNum;
 
-    private void Update()
+    private void Start()
+    {
+        spawnEnemy();
+    }
+    private void spawnEnemy()
     {
         spawnManger[mapNum].SetActive(true);
     }
@@ -31,6 +35,7 @@ public class StageManager : MonoBehaviour
 
         targetObj.transform.position = toObj[mapNum].transform.position;
         mapNum++;
+        spawnEnemy();
         Camera.main.GetComponent<CameraFollow>().ChangeLimit(mapNum);
         yield return StartCoroutine(FadeFlowOut());
 

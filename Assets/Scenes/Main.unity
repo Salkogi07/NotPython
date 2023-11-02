@@ -456,12 +456,12 @@ MonoBehaviour:
   - {fileID: 2058070885}
   enemySet:
   - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
-  - {fileID: 1860762529801711549, guid: ea1f931eac465284a921e32ba6b0f9c0, type: 3}
   - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
-  - {fileID: 1860762529801711549, guid: ea1f931eac465284a921e32ba6b0f9c0, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
 --- !u!1 &61730380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,12 +2661,12 @@ MonoBehaviour:
   - {fileID: 439548672}
   enemySet:
   - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
-  - {fileID: 1860762529801711549, guid: ea1f931eac465284a921e32ba6b0f9c0, type: 3}
   - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
-  - {fileID: 1860762529801711549, guid: ea1f931eac465284a921e32ba6b0f9c0, type: 3}
-  - {fileID: 6915056255695316797, guid: 79b69200931836843b83765c59e0d9cc, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
+  - {fileID: 7126499305868996418, guid: 905bf16db7ae07848b933ec3a3c6f999, type: 3}
 --- !u!1 &665057972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,6 +2912,7 @@ GameObject:
   - component: {fileID: 737173564}
   - component: {fileID: 737173565}
   - component: {fileID: 737173566}
+  - component: {fileID: 737173567}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3044,6 +3045,22 @@ MonoBehaviour:
   - {fileID: 1889998847}
   Panel: {fileID: 90902124}
   mapNum: 0
+--- !u!114 &737173567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737173558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45167fee5757c5a4880cdc891a0b42d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCount: 0
+  nextDoor:
+  - {fileID: 374924571}
+  - {fileID: 1871274143}
 --- !u!1 &740603046
 GameObject:
   m_ObjectHideFlags: 0

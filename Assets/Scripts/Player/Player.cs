@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public Canvas dieUI;
     public PlayUI playUI;
+    PlayerMove playerMove;
     public int playerHp;
     public int currentHp;
 
@@ -17,11 +18,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        playerMove = GetComponent<PlayerMove>();
         currentHp = playerHp;
         isControl = true;
     }
 
-    public int TakeDamge(int damage)
+    public int TakeDamge(int damage,GameObject gameObject1)
     {
         int enemyAtk = damage;
         float dmg;
@@ -42,6 +44,10 @@ public class Player : MonoBehaviour
             if (currentHp <= 0)
             {
                 PlayerDie();
+            }
+            else
+            {
+                playerMove.KnockBack(gameObject1);
             }
         }
         return lastdmg;

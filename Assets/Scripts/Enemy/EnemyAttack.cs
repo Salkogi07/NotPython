@@ -69,7 +69,7 @@ public class EnemyAttack : MonoBehaviour
             }
             if (playerStillInRange)
             {
-                collider.GetComponent<Player>().TakeDamge(enemy.enemyAttackDamge);
+                collider.GetComponent<Player>().TakeDamge(enemy.enemyAttackDamge,gameObject);
             }
 
             isAttacking = false;

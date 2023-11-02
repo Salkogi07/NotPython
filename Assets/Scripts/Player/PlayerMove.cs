@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerMove : MonoBehaviour
     public LayerMask g_Layer;
     public float jumpingPower = 20f;
     public int jumpCount = 2;
+    public float knockBackForce = 13f;
     int jumpCnt;
     private bool isGround = false;
 
@@ -34,6 +36,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool isControl;
     public bool isAttack;
+    private bool isKnockBack = false;
 
     private void Awake()
     {
@@ -199,6 +202,24 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void KnockBack(GameObject gameObject1)
+    {
+        isKnockBack = true;
+        Vector2 knockBackDirection = transform.position - gameObject1.transform.position;
+        knockBackDirection.Normalize();
+        rigid.velocity = knockBackDirection * knockBackForce;
+        StartCoroutine(ResetKnockback());
+    }
+
+    private IEnumerator ResetKnockback()
+    {
+        // 0.1초 후에 rigid.velocity를 초기화하여 넉백 효과를 중지합니다.
+        yield return new WaitForSeconds(0.1f);
+        rigid.velocity = Vector2.zero;
+        yield return new WaitForSeconds(1f);
+        isKnockBack = false;
     }
 
     private void OnDrawGizmos()

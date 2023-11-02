@@ -95,7 +95,7 @@ public class BossJungsikPattern1 : MonoBehaviour
             }
             if (playerStillInRange)
             {
-                collider.GetComponent<Player>().TakeDamge(boss.bossAttackDamge);
+                collider.GetComponent<Player>().TakeDamge(boss.bossAttackDamge, gameObject);
             }
 
             attackAni.SetActive (false);

@@ -14,10 +14,11 @@ public class BossJungsikUI : MonoBehaviour
     
 
     StageManager stageManager;
-    public BossJungsik boss;
+    public BossJungsik[] boss;
 
     float imsiSlider;
     string imsiText;
+    public int page = 0;
 
     void Start()
     {
@@ -25,8 +26,8 @@ public class BossJungsikUI : MonoBehaviour
         if(stageManager.mapNum == 2)
         {
             bossUI.gameObject.SetActive(true);
-            imsiText = boss.currentHp + " / " + boss.bossHp;
-            imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
+            imsiText = boss[page].currentHp + " / " + boss[page].bossHp;
+            imsiSlider = (float)boss[page].currentHp / (float)boss[page].bossHp;
         }
         else
         {
@@ -39,10 +40,10 @@ public class BossJungsikUI : MonoBehaviour
         if (stageManager.mapNum == 2)
         {
             bossUI.gameObject.SetActive(true);
-            imsiSlider = (float)boss.currentHp / (float)boss.bossHp;
-            imsiText = boss.currentHp + " / " + boss.bossHp;
+            imsiSlider = (float)boss[page].currentHp / (float)boss[page].bossHp;
+            imsiText = boss[page].currentHp + " / " + boss[page].bossHp;
             HandleHp();
-            if (boss.currentHp == 0)
+            if (boss[page].currentHp == 0)
             {
                 hpbar.enabled = false;
             }

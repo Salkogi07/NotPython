@@ -6,6 +6,7 @@ public class BossJungsik : MonoBehaviour
 {
     public GameObject page2;
     public BossData bossData;
+    private BossJungsikUI ui;
 
     public int bossHp;
     public int currentHp;
@@ -15,8 +16,9 @@ public class BossJungsik : MonoBehaviour
 
     public float knockBackForce = 0f;
 
-    private void Awake()
+    private void Start()
     {
+        ui = GameObject.Find("GameManager").GetComponent<BossJungsikUI>();
         bossHp = bossData.health;
         bossAttackDamge = bossData.damage;
         bossDefense = bossData.defense;
@@ -65,6 +67,6 @@ public class BossJungsik : MonoBehaviour
     private void page2Appear()
     {
         page2.gameObject.SetActive(true);
-        currentHp = 1000;
+        ui.page = 1;
     }
 }

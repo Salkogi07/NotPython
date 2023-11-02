@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BossJungsik : MonoBehaviour
 {
-    BossJungsikMove bossMove;
 
     public BossData bossData;
 
@@ -17,11 +15,8 @@ public class BossJungsik : MonoBehaviour
 
     public float knockBackForce = 0f;
 
-    float imsiSlider;
-
     private void Awake()
     {
-        bossMove = GetComponent<BossJungsikMove>();
         bossHp = bossData.health;
         bossAttackDamge = bossData.damage;
         bossDefense = bossData.defense;

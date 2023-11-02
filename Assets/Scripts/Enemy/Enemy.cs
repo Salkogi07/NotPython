@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy : MonoBehaviour
 {
     EnemyMove enemyMove;
-    private GameObject gameManager;
+    private KillEnemyCount killEnemyCount;
 
     public EnemyData enemyData;
     
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        killEnemyCount = GameObject.Find("GameManager").GetComponent<KillEnemyCount>();
         enemyMove = GetComponent<EnemyMove>();
         enemyHp = enemyData.health;
         enemyAttackDamge = enemyData.damage;
@@ -83,5 +83,6 @@ public class Enemy : MonoBehaviour
     private void EnemyDie()
     {
         gameObject.SetActive(false);
+        killEnemyCount.killCount++;
     }
 }

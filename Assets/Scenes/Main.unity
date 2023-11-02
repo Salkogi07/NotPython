@@ -2910,6 +2910,7 @@ GameObject:
   - component: {fileID: 737173562}
   - component: {fileID: 737173563}
   - component: {fileID: 737173564}
+  - component: {fileID: 737173568}
   - component: {fileID: 737173565}
   - component: {fileID: 737173566}
   - component: {fileID: 737173567}
@@ -3061,6 +3062,20 @@ MonoBehaviour:
   nextDoor:
   - {fileID: 374924571}
   - {fileID: 1871274143}
+--- !u!114 &737173568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737173558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2559612234855a48aae8e7f97d68f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerText: {fileID: 1112718604}
+  killCount: 0
 --- !u!1 &740603046
 GameObject:
   m_ObjectHideFlags: 0

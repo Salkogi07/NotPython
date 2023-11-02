@@ -14,7 +14,6 @@ public class BossJungsikPattern1 : MonoBehaviour
 
     public Transform[] spawnPoints;
     public GameObject[] spawnPrefab;
-    public StageManager stageManager;
 
     private float waitTime = 1.3f;
 
@@ -38,7 +37,7 @@ public class BossJungsikPattern1 : MonoBehaviour
         bossMove.isAttack = true;
         yield return StartCoroutine(SpanwEnemyStart());
         bossMove.isAttack = false;
-        spawnCount += 2;
+        spawnCount++;
         spawntimer = 0.0f; // 타이머를 리셋합니다.
     }
 
@@ -66,7 +65,7 @@ public class BossJungsikPattern1 : MonoBehaviour
         spawntimer += Time.deltaTime;
         if (spawntimer >= spawnCooldown)
         {
-            if(spawnCount < 10 && stageManager.mapNum == 2)
+            if(spawnCount < 3)
             {
                 StartCoroutine(EnemySpawn());
             }

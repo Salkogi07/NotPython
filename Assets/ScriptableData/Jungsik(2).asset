@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9649a245c1a9848b5f93738a5cd7cc, type: 3}
-  m_Name: Enemy Default
+  m_Script: {fileID: 11500000, guid: b1650804322ea8c4e877110dab229e68, type: 3}
+  m_Name: Jungsik(2)
   m_EditorClassIdentifier: 
-  health: 130
-  damage: 400
-  speed: 4
-  defense: 150
-  knockBackForce: 15
+  health: 400
+  damage: 800
+  speed: 3
+  defense: 400
+  knockBackForce: 0

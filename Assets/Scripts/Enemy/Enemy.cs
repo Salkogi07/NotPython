@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     public int enemyAttackDamge;
     public float enemyDefense;
     public int enemySpeed;
+    public float enemyAttackSpeed;
+    public float enemyAttackCooldonw;
 
     public float knockBackForce = 20f;
 
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour
         enemyDefense = enemyData.defense;
         enemySpeed = enemyData.speed;
         knockBackForce = enemyData.knockBackForce;
+        enemyAttackSpeed = enemyData.attackSpeed;
+        enemyAttackCooldonw = enemyData.attackCooldown;
 
         currentHp = enemyHp;
         imsiSlider = (float)currentHp / (float)enemyHp;

@@ -12,6 +12,11 @@ public class PlayUI : MonoBehaviour
     public Image img;
     public Timer timer;
 
+    private void Awake()
+    {
+        Resume();
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -52,6 +57,7 @@ public class PlayUI : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
+
     public void diePlayer()
     {
         Time.timeScale = 0f;

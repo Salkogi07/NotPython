@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9649a245c1a9848b5f93738a5cd7cc, type: 3}
   m_Name: Enemy Heavy
   m_EditorClassIdentifier: 
-  health: 300
-  damage: 150
+  health: 200
+  defense: 220
+  damage: 500
+  attackSpeed: 2
+  attackCooldown: 2.5
   speed: 2
-  defense: 300
   knockBackForce: 0

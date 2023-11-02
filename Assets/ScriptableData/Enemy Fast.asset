@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Enemy Fast
   m_EditorClassIdentifier: 
   health: 100
-  damage: 400
-  speed: 6
   defense: 100
+  damage: 300
+  attackSpeed: 1
+  attackCooldown: 1
+  speed: 6
   knockBackForce: 20

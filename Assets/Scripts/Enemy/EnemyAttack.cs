@@ -22,6 +22,8 @@ public class EnemyAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyMove = GetComponent<EnemyMove>();
         enemy = GetComponent<Enemy>();
+        waitTime = enemy.enemyAttackSpeed;
+        attackCooldown = enemy.enemyAttackCooldonw;
     }
 
 

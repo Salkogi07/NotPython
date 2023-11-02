@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
     EnemyMove enemyMove;
+    private GameObject gameManager;
 
     public EnemyData enemyData;
     
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         enemyMove = GetComponent<EnemyMove>();
         enemyHp = enemyData.health;
         enemyAttackDamge = enemyData.damage;

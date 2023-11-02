@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossJungsik : MonoBehaviour
 {
-
+    public GameObject page2;
     public BossData bossData;
 
     public int bossHp;
@@ -59,5 +59,12 @@ public class BossJungsik : MonoBehaviour
     private void bossDie()
     {
         gameObject.SetActive(false);
+        Invoke("page2Appear",1f);
+    }
+
+    private void page2Appear()
+    {
+        page2.gameObject.SetActive(true);
+        currentHp = 1000;
     }
 }

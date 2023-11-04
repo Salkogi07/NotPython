@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                playerMove.KnockBack(gameObject1);
+                
             }
         }
         return lastdmg;

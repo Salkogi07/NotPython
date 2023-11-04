@@ -7,7 +7,6 @@ public class BossJungsikMove : MonoBehaviour
     Animator animator;
     BossJungsik boss;
     Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
     public float moveDir;    // Moving direction, Random
     private bool isFacingRight = true;
     public float dis;
@@ -26,7 +25,6 @@ public class BossJungsikMove : MonoBehaviour
         boss = GetComponent<BossJungsik>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()

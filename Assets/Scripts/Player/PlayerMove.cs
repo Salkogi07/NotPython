@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool isControl;
     public bool isAttack;
-    private bool isKnockBack = false;
+
 
     private void Awake()
     {
@@ -125,11 +125,20 @@ public class PlayerMove : MonoBehaviour
             jumpCnt = jumpCount;
             animator.SetBool("isJump", false);
             jumpEffect.SetActive(false);
+            animator.SetBool("isFail", false);
+            if (rigid.velocity.y == 0f)
+            {
+                animator.SetBool("isFail", false);
+            }
             isGround = true;
         }
         else
         {
-            animator.SetTrigger("isJump");
+            if(rigid.velocity.y < 0f)
+            {
+                animator.SetBool("isFail",true);
+            }
+            
             isGround = false;
         }
     }
@@ -202,24 +211,6 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void KnockBack(GameObject gameObject1)
-    {
-        isKnockBack = true;
-        Vector2 knockBackDirection = transform.position - gameObject1.transform.position;
-        knockBackDirection.Normalize();
-        rigid.velocity = knockBackDirection * knockBackForce;
-        StartCoroutine(ResetKnockback());
-    }
-
-    private IEnumerator ResetKnockback()
-    {
-        // 0.1초 후에 rigid.velocity를 초기화하여 넉백 효과를 중지합니다.
-        yield return new WaitForSeconds(0.1f);
-        rigid.velocity = Vector2.zero;
-        yield return new WaitForSeconds(1f);
-        isKnockBack = false;
     }
 
     private void OnDrawGizmos()

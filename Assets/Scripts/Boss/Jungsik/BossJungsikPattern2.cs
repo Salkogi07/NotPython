@@ -20,19 +20,21 @@ public class BossJungsikPattern2 : MonoBehaviour
     public Vector2 searchbox;
 
     public bool isAttack = false;
+    public GameObject dashAttackObj;
+    private BossJungsikDash dash;
 
     private Transform target;
 
     private float waitTime = 1.3f;
 
     private bool isAttacking = false;
-    private float attackCooldown = 1.5f; // ���� ��ٿ� �ð�
+    private float attackCooldown = 1.5f;
     private Coroutine attackCoroutine;
 
     private bool canDash;
     private bool isDash = false;
-    private float dashPower = 50f;
-    private float dashTime = 0.5f;
+    private float dashPower = 40f;
+    private float dashTime = 0.2f;
     private float dashCooldown = 8f;
     private float dashtimer = 0.0f;
 
@@ -43,6 +45,7 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     private void Awake()
     {
+        dash = dashAttackObj.GetComponent<BossJungsikDash>();
         animator = GetComponent<Animator>();
         boss = GetComponent<BossJungsik>();
         rigid = GetComponent<Rigidbody2D>();
@@ -63,7 +66,6 @@ public class BossJungsikPattern2 : MonoBehaviour
             {
                 if (!isAttacking && dis <= 2)
                 {
-                    // ��ٿ��� ������ ������ ����
                     if (attackCoroutine == null)
                     {
                         attackCoroutine = StartCoroutine(Attack(collider));
@@ -132,6 +134,7 @@ public class BossJungsikPattern2 : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            dashAttackObj.transform.localScale = localScale;
         }
     }
 
@@ -150,6 +153,7 @@ public class BossJungsikPattern2 : MonoBehaviour
     {
         if (canDash && !isSong && !isAttacking)
         {
+            dashAttackObj.transform.position = transform.position;
             StartCoroutine(dashAttackStart());
         }
     }
@@ -165,6 +169,7 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     IEnumerator dashAttackStart()
     {
+        dash.isDashAttack = true;
         isDash = true;
         canDash = false;
         isAttack = true;
@@ -175,6 +180,7 @@ public class BossJungsikPattern2 : MonoBehaviour
         rigid.gravityScale = originalGravity;
         isDash = false;
         isAttack = false;
+        dash.isDashAttack = false;
     }
 
     IEnumerator Attack(Collider2D collider)

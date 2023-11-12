@@ -6,6 +6,7 @@ public class BossJungsikPattern2 : MonoBehaviour
 {
     Animator animator;
     BossJungsik boss;
+
     [SerializeField] private Rigidbody2D rigid;
     public GameObject attackAni;
 
@@ -23,6 +24,8 @@ public class BossJungsikPattern2 : MonoBehaviour
     public GameObject dashAttackObj;
     private BossJungsikDash dash;
 
+    public GameObject toObj;
+
     private Transform target;
 
     private float waitTime = 1.3f;
@@ -33,8 +36,8 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     private bool canDash;
     private bool isDash = false;
-    private float dashPower = 40f;
-    private float dashTime = 0.2f;
+    private float dashPower = 30f;
+    private float dashTime = 0.18f;
     private float dashCooldown = 8f;
     private float dashtimer = 0.0f;
 
@@ -163,6 +166,10 @@ public class BossJungsikPattern2 : MonoBehaviour
         isSong = true;
         canSong = false;
         Debug.Log("song");
+        transform.position = toObj.transform.position;
+        isAttack = true;
+        //song animation true
+
         yield return new WaitForSeconds(1f);
         isSong = false;
     }
@@ -178,9 +185,9 @@ public class BossJungsikPattern2 : MonoBehaviour
         rigid.velocity = new Vector3(transform.localScale.x * dashPower, 0f);
         yield return new WaitForSeconds(dashTime);
         rigid.gravityScale = originalGravity;
+        dash.isDashAttack = false;
         isDash = false;
         isAttack = false;
-        dash.isDashAttack = false;
     }
 
     IEnumerator Attack(Collider2D collider)

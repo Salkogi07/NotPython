@@ -168,8 +168,6 @@ public class BossJungsikPattern2 : MonoBehaviour
         Debug.Log("song");
         transform.position = toObj.transform.position;
         isAttack = true;
-        //song animation true
-
         yield return new WaitForSeconds(1f);
         isSong = false;
     }

@@ -41,9 +41,6 @@ public class BossJungsikPattern2 : MonoBehaviour
     private float dashCooldown = 8f;
     private float dashtimer = 0.0f;
 
-    private float currenttimeDash;
-
-
     private bool canSong;
     private bool isSong = false;
     private float songCooldown = 20f;
@@ -147,23 +144,6 @@ public class BossJungsikPattern2 : MonoBehaviour
             }
             currenttimeSong -= Time.deltaTime;
         }
-
-        if (isDash)
-        {
-            currenttimeDash = dashTime;
-            while (currenttimeDash > 0)
-            {
-                dash.isDashAttack = true;
-                float originalGravity = rigid.gravityScale;
-                rigid.gravityScale = 0f;
-                rigid.velocity = new Vector3(transform.localScale.x * dashPower, 0f);
-                rigid.gravityScale = originalGravity;
-                currenttimeDash -= Time.deltaTime;
-            }
-            dash.isDashAttack = false;
-            isDash = false;
-            isAttack = false;
-        }
     }
     private void Filp()
     {
@@ -211,13 +191,18 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     IEnumerator dashAttackStart()
     {
-        isAttack = true;
-        yield return new WaitForSeconds(1.0f);
-        isAttack = false;
-
+        dash.isDashAttack = true;
         isDash = true;
         canDash = false;
         isAttack = true;
+        float originalGravity = rigid.gravityScale;
+        rigid.gravityScale = 0f;
+        rigid.velocity = new Vector3(transform.localScale.x * dashPower, 0f);
+        yield return new WaitForSeconds(dashTime);
+        rigid.gravityScale = originalGravity;
+        dash.isDashAttack = false;
+        isDash = false;
+        isAttack = false;
     }
 
     IEnumerator Attack(Collider2D collider)

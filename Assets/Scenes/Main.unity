@@ -1387,7 +1387,7 @@ MonoBehaviour:
   isAttack: 0
   dashAttackObj: {fileID: 574695529}
   toObj: {fileID: 885361881}
-  cooltime: 1.2
+  cooltimeSong: 1.2
   bullet: {fileID: 5437318024951336918, guid: 114666666f640f94c8aa5caae7208b77, type: 3}
   pos: {fileID: 488119105}
 --- !u!50 &197733226

@@ -41,10 +41,19 @@ public class BossJungsikPattern2 : MonoBehaviour
     private float dashCooldown = 8f;
     private float dashtimer = 0.0f;
 
+    private float currenttimeDash;
+
+
     private bool canSong;
     private bool isSong = false;
     private float songCooldown = 20f;
     private float songtimer = 0.0f;
+
+    public float cooltimeSong;
+    private float currenttimeSong;
+
+    public GameObject bullet;
+    public Transform pos;
 
     private void Awake()
     {
@@ -128,6 +137,33 @@ public class BossJungsikPattern2 : MonoBehaviour
             canSong = true;
             songtimer = 0f;
         }
+
+        if (isSong)
+        {
+            if (currenttimeSong <= 0)
+            {
+                GameObject bulletcopy = Instantiate(bullet, pos.position, transform.rotation);
+                currenttimeSong = cooltimeSong;
+            }
+            currenttimeSong -= Time.deltaTime;
+        }
+
+        if (isDash)
+        {
+            currenttimeDash = dashTime;
+            while (currenttimeDash > 0)
+            {
+                dash.isDashAttack = true;
+                float originalGravity = rigid.gravityScale;
+                rigid.gravityScale = 0f;
+                rigid.velocity = new Vector3(transform.localScale.x * dashPower, 0f);
+                rigid.gravityScale = originalGravity;
+                currenttimeDash -= Time.deltaTime;
+            }
+            dash.isDashAttack = false;
+            isDash = false;
+            isAttack = false;
+        }
     }
     private void Filp()
     {
@@ -163,29 +199,25 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     IEnumerator songAttackStart()
     {
-        isSong = true;
         canSong = false;
         Debug.Log("song");
         transform.position = toObj.transform.position;
         isAttack = true;
-        yield return new WaitForSeconds(1f);
+        isSong = true;
+        yield return new WaitForSeconds(10f);
         isSong = false;
+        isAttack = false;
     }
 
     IEnumerator dashAttackStart()
     {
-        dash.isDashAttack = true;
+        isAttack = true;
+        yield return new WaitForSeconds(1.0f);
+        isAttack = false;
+
         isDash = true;
         canDash = false;
         isAttack = true;
-        float originalGravity = rigid.gravityScale;
-        rigid.gravityScale = 0f;
-        rigid.velocity = new Vector3(transform.localScale.x * dashPower, 0f);
-        yield return new WaitForSeconds(dashTime);
-        rigid.gravityScale = originalGravity;
-        dash.isDashAttack = false;
-        isDash = false;
-        isAttack = false;
     }
 
     IEnumerator Attack(Collider2D collider)

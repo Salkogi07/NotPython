@@ -6064,7 +6064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dieUI: {fileID: 177184618}
   playUI: {fileID: 737173560}
-  playerHp: 100
+  playerHp: 160
   currentHp: 0
   playerAttackDamge: 100000
   playerDefense: 200

@@ -114,7 +114,6 @@ public class BossJungsikPattern1 : MonoBehaviour
         enemyIndex = Random.Range(0, 3);
         SpawnEnemy(enemyIndex, 1);
         yield return null;
-
     }
 
     void SpawnEnemy(int enemyNum, int enemyPoint)

@@ -6066,7 +6066,7 @@ MonoBehaviour:
   playUI: {fileID: 737173560}
   playerHp: 160
   currentHp: 0
-  playerAttackDamge: 100000
+  playerAttackDamge: 1200
   playerDefense: 200
   playerCritical: 10
   isControl: 0

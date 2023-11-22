@@ -189,12 +189,13 @@ public class BossJungsikPattern2 : MonoBehaviour
 
     IEnumerator songAttackStart()
     {
-        canSong = false;
-        transform.position = toObj.transform.position;
         isAttack = true;
         isAttacking = true;
+        yield return new WaitForSeconds(1f);
+        canSong = false;
+        transform.position = toObj.transform.position;
         isSong = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(12f);
         isSong = false;
         isAttacking = false;
         isAttack = false;
@@ -214,9 +215,9 @@ public class BossJungsikPattern2 : MonoBehaviour
         rigid.gravityScale = originalGravity;
         dash.isDashAttack = false;
         isDash = false;
+        yield return new WaitForSeconds(1f);
         isAttack = false;
         isAttacking = false;
-        yield return new WaitForSeconds(1f);
     }
 
     IEnumerator Attack(Collider2D collider)

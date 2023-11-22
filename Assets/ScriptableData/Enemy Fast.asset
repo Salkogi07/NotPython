@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   defense: 100
-  damage: 300
+  damage: 270
   attackSpeed: 1
   attackCooldown: 1
   speed: 6
